@@ -50,9 +50,11 @@ To run this project locally, follow these steps:
 
 ## Screenshots
 
-<img src="./assets/screenshot.png" alt="Screenshot of the Mario Kart Shop" width="600">
+<img src="./src/assets/screenshot.png" alt="Screenshot of the Mario Kart Shop" width="600">
 
 ---
+
+
 
 
 
