@@ -31,18 +31,16 @@ To run this project locally, follow these steps:
 4. Start the development server using Vite:
    ```bash
    npm run dev
+
+   or
+   
+   vite
    ```
 
 5. Open your browser and visit:
    ```
    http://localhost:5173
    ```
-
-## Technologies Used
-
-- React
-- Vite
-- CSS
 
 ## Project Structure
 
