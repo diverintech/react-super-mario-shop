@@ -1,8 +1,13 @@
 import './App.css';
+import OrderDetails from "./components/OrderDetails.jsx";
+import Item from "./components/Item.jsx";
+import { useState } from "react";
 
 function App() {
 
-    const items = [
+    const shopName = "Jersey Shop Made with React JS"
+
+    const [items, setItems] = useState([
         {
             
             id: 1, 
@@ -20,7 +25,7 @@ function App() {
             price: 99.99,
             active: false,
             quantity: 1, 
-            isInBag: true
+            isInBag: false
         },
         {
             id: 3, 
@@ -84,9 +89,22 @@ function App() {
             quantity: 1, 
             isInBag: false
         }
-    ];
+    ]);
 
-    const shopName = "Jersey Shop Made with React JS"
+    const itemsInBag = items.filter(item => item.isInBag);
+
+    function selectHandler(id){
+        let item = items.filter((item) => item.id === id)[0];
+        item.isInBag = !item.isInBag;
+        setItems(items.map((element) => element.id === id ? item : element));
+    }
+
+    function quantityHandler(e, id, increment) {
+        e.stopPropagation();
+        let item = items.filter((item) => item.id === id)[0];
+        item.quantity += increment;
+        setItems(items.map((element) => element.id === id ? item : element));
+    }
 
     return ( 
         <>
@@ -94,50 +112,16 @@ function App() {
                 <h4>{shopName}</h4>
 
                 { items.map((item) =>
-                    <div key={item.id} className={`product ${item.isInBag ? 'selected' : ''}`}>
-                        <div className="photo">
-                            <img src={"././img/" + item.photo}/>
-                        </div>
-                        <div className="description">
-                            <span className="name">{item.name}</span>
-                            <span className="price">{item.price}</span>
-                            {
-                                item.isInBag &&
-                                    <div className="quantity-area">
-                                        <button>-</button>
-                                        <span className="quantity">{item.quantity}</span>
-                                        <button>+</button>
-                                    </div>
-                            }
-                        </div>
-                    </div>
+                    <Item
+                        selectProduct={(id) => selectHandler(id)}
+                        changeQuantity={(e, id, increment) => quantityHandler(e, id, increment) }
+                        item={item}
+                        key={item.id}
+                    />
                 )}
 
             </section>
-
-            <section className="summary">
-                <strong>Order Details</strong>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1x Real Madrid</td>
-                <td>$ 119.99</td>
-            </tr>
-
-            <tr>
-            <th>Total</th>
-                            <th>$ 119.99</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            
+            {itemsInBag.length > 0 && <OrderDetails itemsInBag={itemsInBag} />}
         </>
     );
 }
