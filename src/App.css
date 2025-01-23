@@ -4,12 +4,20 @@ body {
   background-color: #7ccb8e;
 }
 
-main > section.items h4 {
+main > section.items h2 {
   text-align: center;
   margin-top: 0;
   width: 100%;
   font-size: 32px;
 }
+
+main > section.items h4 {
+  text-align: center;
+  margin-top: 0;
+  width: 100%;
+  font-size: 20px;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -57,8 +65,17 @@ section.items .description {
   align-items: center;
   text-align: center;
   font-size: 16px;
-  line-height: 15px;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+  .field {
+   font-weight: bold;
+ }
+
 }
+
+
 
 section.items  .description .price {
   font-weight: bold;
