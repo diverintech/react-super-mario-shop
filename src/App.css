@@ -70,17 +70,15 @@ section.items .description {
   margin-top: 1rem;
 
   .field {
-   font-weight: bold;
- }
+    font-weight: bold;
+  }
+
+  .price {
+    margin-top: 2rem;
+  }
 
 }
 
-
-
-section.items  .description .price {
-  font-weight: bold;
-  margin: 4px auto;
-}
 
 section.items  .description .quantity-area {
   padding: 12px;

@@ -13,11 +13,13 @@ function Item({item, selectProduct, changeQuantity}) {
                     <span className="field">Year: {item.year}</span>
                     <span className="field">Platforms: {item.platforms}</span>
                     <span className="field">Players: {item.players}</span>
+                    <span className="field price">Price: {item.price>0 ? item.price : 'Free'}</span>
+
                     {
                         item.isInBag &&
                         <div className="quantity-area">
                             <button
-                                disabled={item.quantity<=1}
+                                disabled={item.quantity <= 1}
                                 onClick={(e) => changeQuantity(e, item.id, -1)}
                             >-
                             </button>
