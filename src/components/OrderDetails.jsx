@@ -21,13 +21,15 @@ function  OrderDetails ({itemsInBag}) {
                     {itemsInBag.map((item) =>
                         <tr>
                             <td> {item.quantity} x {item.name} </td>
-                            <td>$ {(item.price * item.quantity).toFixed(2)}</td>
+                            {
+                                item.price > 0 ? <td>{(item.price * item.quantity).toFixed(2)} €</td> : 'Free'
+                            }
                         </tr>
                     )}
 
                     <tr>
                         <th>Total</th>
-                        <th>$ {calculateTotal()}</th>
+                        <th>{calculateTotal()} €</th>
                     </tr>
                     </tbody>
                 </table>
